@@ -98,4 +98,4 @@ function mouvementAliens(){
     }
 }
 
-setInterval(mouvementAliens, 1000)
+//setInterval(mouvementAliens, 1000)
