@@ -1,4 +1,6 @@
 const startGameButton = document.querySelector("#start-game-button");
+let width = 20;
+let height = 20;
 
 startGameButton.addEventListener("click", function() {
     // Code to start the game goes here
@@ -41,26 +43,59 @@ document.addEventListener("keydown", function(event) {
     switch(event.code){
         case "ArrowLeft":
             carres[posShooter].classList.remove("shooter")
-            posShooter--;
+            if (posShooter % width !==0) posShooter -=1
             carres[posShooter].classList.add("shooter")
             break;
         
         case "ArrowRight":
             carres[posShooter].classList.remove("shooter")
-            posShooter++;
+            if (posShooter % width < width -1) posShooter +=1
             carres[posShooter].classList.add("shooter")
             break;
 
         case "ArrowUp":
             carres[posShooter].classList.remove("shooter")
-            posShooter -= 20;
+            if (posShooter - height >= 0 && posShooter > 340) posShooter -= 20
             carres[posShooter].classList.add("shooter")
             break;
 
         case "ArrowDown":
             carres[posShooter].classList.remove("shooter")
-            posShooter += 20;
+            if (posShooter + height < height * height) posShooter += 20
             carres[posShooter].classList.add("shooter")
             break;
     }
 });
+
+function deleteInvaders(){
+    for(let i = 0; i < aliens.length; i++){
+        carres[aliens[i]].classList.remove("invader")
+    }
+}
+
+
+function bougerAliensDroite(){
+    deleteInvaders()
+
+    for(let i = 0; i < aliens.length; i++){
+        aliens[i] += 1;
+        carres[aliens[i]].classList.add("invader");
+    }
+}
+
+function bougerAliensGauche(){
+    deleteInvaders()
+
+    for(let i = 0; i < aliens.length; i++){
+        aliens[i] -= 1;
+        carres[aliens[i]].classList.add("invader");
+    }
+}
+
+function mouvementAliens(){
+    for(let loop1 = 0; loop1 < 20; loop1++){
+        bougerAliensDroite()
+    }
+}
+
+setInterval(mouvementAliens, 1000)

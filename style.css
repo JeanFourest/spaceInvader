@@ -19,9 +19,18 @@ h3{
 }
 
 .invader {
-    background-color: blue;
+    background-image: url("/ressources/ennemies.png");
+    background-position: center;
+    background-size: contain;
+    width: 25px;
+    height: 25px;
 }
 
 .shooter{
-    background-color: red;
+    background-image: url("/ressources/vaisseau.png");
+    background-position: center;
+    background-size: contain;
+    width: 25px;
+    height: 25px;
+    rotate: 180deg;
 }
