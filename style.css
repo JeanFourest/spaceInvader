@@ -54,6 +54,14 @@ body{
     rotate: 180deg;
 }
 
+.bullet{
+    background-image: url("/ressources/lazer.webp");
+    background-position: center;
+    background-size: contain;
+    width: 25px;
+    height: 25px;
+}
+
 .start-button{
     display: flex;
     justify-content: center;
