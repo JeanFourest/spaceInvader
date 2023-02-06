@@ -1,6 +1,6 @@
-
-
 const jeu = document.querySelector(".jeu");
+let width = 20;
+let height = 20;
 
 for(let i = 0; i < 400; i++){
     const carre = document.createElement("div");
