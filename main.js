@@ -74,6 +74,7 @@ function bougerAliensDroite(){
 }
 
 function bougerAliensGauche(){
+
     deleteInvaders()
 
     for(let i = 0; i < aliens.length; i++){
@@ -82,8 +83,11 @@ function bougerAliensGauche(){
     }
 }
 
-let right = true;
+function bougerAliensDown(){
+    deleteInvaders()
 
-while(right){
-    //setInterval(bougerAliensDroite, 1000)
+    for(let i = 0; i < aliens.length; i++){
+        aliens[i] += 20;
+        carres[aliens[i]].classList.add("invader");
+    }
 }
