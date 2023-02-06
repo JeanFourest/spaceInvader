@@ -1,13 +1,3 @@
-const startGameButton = document.querySelector("#start-game-button");
-let width = 20;
-let height = 20;
-
-startGameButton.addEventListener("click", function() {
-    // Code to start the game goes here
-    console.log("The game has started!");
-});
-
-
 
 
 const jeu = document.querySelector(".jeu");

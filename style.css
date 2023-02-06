@@ -1,14 +1,33 @@
+@font-face {
+    font-family: "Star Wars";
+    src: url("ressources/SfDistantGalaxyAlternate-OE4d.ttf");
+  }
+  
+h1 {
+    font-family: "Star Wars";
+    text-shadow: yellow 1px 1px, yellow -1px 1px, yellow -1px -1px, yellow 1px -1px;
+    font-size: 4em;
+    text-align: center;
+}
+
 h3{
     margin: auto;
     width: fit-content;
     padding-right: 100px;
+    color: white;
+}
+
+body{
+    background-color: black;
 }
 
 .jeu{
     margin: auto;
     width: 500px;
     height: 500px;
-    background-color: black;
+    background: url("ressources/space.gif");
+    background-size: cover;
+    background-position: center;
     display: flex;
     flex-wrap: wrap;
 }
@@ -33,4 +52,29 @@ h3{
     width: 25px;
     height: 25px;
     rotate: 180deg;
+}
+
+.start-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    
+}
+
+.start-game-button{
+    font-family: "Star Wars";
+    text-shadow: yellow 1px 1px, yellow -1px 1px, yellow -1px -1px, yellow 1px -1px;
+    font-size: medium;
+    text-align: center;
+    background: transparent;
+    border: none;
+    padding: 6px;
+}
+
+.start-game-button:hover{
+    cursor: pointer;
+    border: 8px solid yellow;
+    border-radius: 5em;
+    background-color: transparent;
 }
