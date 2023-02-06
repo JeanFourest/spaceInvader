@@ -23,6 +23,7 @@ function draw(){
 }
 
 let posShooter = 389;
+let posBullet = posShooter - 20;
 
 carres[posShooter].classList.add("shooter")
 
@@ -53,6 +54,12 @@ document.addEventListener("keydown", function(event) {
             carres[posShooter].classList.remove("shooter")
             if (posShooter + height < height * height) posShooter += 20
             carres[posShooter].classList.add("shooter")
+            break;
+
+        case "Space":
+            console.log("shoot");
+            carres[posBullet].classList.add("bullet")
+            if(posBullet - height < height * height) posBullet += 20
             break;
     }
 });
