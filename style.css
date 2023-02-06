@@ -22,14 +22,14 @@
 
 @font-face {
     font-family: "Star Wars";
-    src: url("SfDistantGalaxyAlternate-OE4d.ttf");
+    src: url("ressources/SfDistantGalaxyAlternate-OE4d.ttf");
 }
 
 h1{
     font-family: "Star Wars";
     color: green;
     text-align: center;
-    
+    font-size: xx-large;
 }
 
 h3 {
