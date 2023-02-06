@@ -82,10 +82,8 @@ function bougerAliensGauche(){
     }
 }
 
-function mouvementAliens(){
-    for(let loop1 = 0; loop1 < 20; loop1++){
-        bougerAliensDroite()
-    }
-}
+let right = true;
 
-//setInterval(mouvementAliens, 1000)
+while(right){
+    //setInterval(bougerAliensDroite, 1000)
+}
