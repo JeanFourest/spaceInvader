@@ -46,7 +46,7 @@ document.addEventListener("keydown", function(event) {
 
         case "ArrowUp":
             carres[posShooter].classList.remove("shooter")
-            if (posShooter - height >= 0 && posShooter > 340) posShooter -= 20
+            if (posShooter - height >= 0 && posShooter > 360) posShooter -= 20
             carres[posShooter].classList.add("shooter")
             break;
 
@@ -75,7 +75,6 @@ function bougerAliensDroite(){
 }
 
 function bougerAliensGauche(){
-
     deleteInvaders()
 
     for(let i = 0; i < aliens.length; i++){
@@ -92,6 +91,33 @@ function bougerAliensDown(){
         carres[aliens[i]].classList.add("invader");
     }
 }
+
+
+let direction = "right";
+
+function bougerAliens() {
+    if (direction === "right") {
+        bougerAliensDroite();
+        if (aliens.some(alien => (alien + 1) % width === 0)) {
+            direction = "left";
+            setTimeout(() => {
+                bougerAliensDown();
+            }, 800);
+        }
+
+    } else {
+        bougerAliensGauche();
+        if (aliens.some(alien => alien % width === 0)) {
+            direction = "right";
+            setTimeout(() => {
+                bougerAliensDown();
+            }, 800);
+        }
+    }
+}
+
+setInterval(bougerAliens, 1600);
+
 
 function deleteBullets(){
     for(let i = 0; i < aliens.length; i++){
