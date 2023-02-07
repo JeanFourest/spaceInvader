@@ -16,14 +16,20 @@ const aliens = [
 
 ]
 
+const bullets = []
+
 function draw(){
     for(let i = 0; i < aliens.length; i++){
         carres[aliens[i]].classList.add("invader")
     }
 }
 
+function drawBullet(){
+
+}
+
 let posShooter = 389;
-let posBullet = posShooter - 20;
+let posBullet = posShooter;
 
 carres[posShooter].classList.add("shooter")
 
@@ -54,6 +60,9 @@ document.addEventListener("keydown", function(event) {
             carres[posShooter].classList.remove("shooter")
             if (posShooter + height < height * height) posShooter += 20
             carres[posShooter].classList.add("shooter")
+            break;
+        case "Space":
+            shootBullets();
             break;
     }
 });
@@ -118,28 +127,15 @@ function bougerAliens() {
 
 setInterval(bougerAliens, 1600);
 
-
-function deleteBullets(){
-    for(let i = 0; i < aliens.length; i++){
-        carres[aliens[posBullet]].classList.remove("bullet")
-    }
-}
-
-function shoot(){
-    let laser;
-
+function shootBullets(){
+    let posBullet = posShooter;
     function moveBullets(){
-        carres[posBullet].classList.remove("bullet")
-        posBullet -= 20
-        carres[posBullet].classList.add("bullet")
-    }
-
-    document.addEventListener('keydown', function(e){
-        switch(e.code) {
-            case 'Space':
-                laser = setInterval(moveBullets, 600);
+        carres[posBullet].classList.remove("bullet");
+        posBullet -= 20;
+        if (posBullet<0){
+            clearInterval(bulletId);
         }
-    });
-    
+        carres[posBullet].classList.add("bullet");
+    }
+    let bulletId = setInterval(moveBullets, 400);
 }
-setInterval(shoot, 600);
