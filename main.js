@@ -81,7 +81,6 @@ function bougerAliensDroite(){
 }
 
 function bougerAliensGauche(){
-
     deleteInvaders()
 
     for(let i = 0; i < aliens.length; i++){
@@ -98,3 +97,26 @@ function bougerAliensDown(){
         carres[aliens[i]].classList.add("invader");
     }
 }
+
+
+
+let direction = "right";
+
+function bougerAliens() {
+    if (direction === "right") {
+        bougerAliensDroite();
+        if (aliens.some(alien => (alien + 1) % width === 0)) {
+            direction = "left";
+            bougerAliensDown();
+        }
+
+    } else {
+        bougerAliensGauche();
+        if (aliens.some(alien => alien % width === 0)) {
+            direction = "right";
+            bougerAliensDown();
+        }
+    }
+}
+
+setInterval(bougerAliens, 500);
