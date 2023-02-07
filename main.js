@@ -55,12 +55,6 @@ document.addEventListener("keydown", function(event) {
             if (posShooter + height < height * height) posShooter += 20
             carres[posShooter].classList.add("shooter")
             break;
-
-        case "Space":
-            console.log("shoot");
-            carres[posBullet].classList.add("bullet")
-            if(posBullet - height < height * height) posBullet += 20
-            break;
     }
 });
 
@@ -98,3 +92,28 @@ function bougerAliensDown(){
         carres[aliens[i]].classList.add("invader");
     }
 }
+
+function deleteBullets(){
+    for(let i = 0; i < aliens.length; i++){
+        carres[aliens[posBullet]].classList.remove("bullet")
+    }
+}
+
+function shoot(){
+    let laser;
+
+    function moveBullets(){
+        carres[posBullet].classList.remove("bullet")
+        posBullet -= 20
+        carres[posBullet].classList.add("bullet")
+    }
+
+    document.addEventListener('keydown', function(e){
+        switch(e.code) {
+            case 'Space':
+                laser = setInterval(moveBullets, 600);
+        }
+    });
+    
+}
+setInterval(shoot, 600);
