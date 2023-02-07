@@ -99,15 +99,16 @@ function bougerAliensDown(){
 }
 
 
-
 let direction = "right";
 
 function bougerAliens() {
     if (direction === "right") {
         bougerAliensDroite();
+        
         if (aliens.some(alien => (alien + 1) % width === 0)) {
             direction = "left";
             bougerAliensDown();
+            
         }
 
     } else {
@@ -119,4 +120,4 @@ function bougerAliens() {
     }
 }
 
-setInterval(bougerAliens, 500);
+setInterval(bougerAliens, 800);
