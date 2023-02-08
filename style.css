@@ -2,7 +2,11 @@
     font-family: "Star Wars";
     src: url("ressources/SfDistantGalaxyAlternate-OE4d.ttf");
   }
-  
+@font-face {
+    font-family: "Space age";
+    src: url("ressources/space age.ttf");
+}
+
 h1 {
     font-family: "Star Wars";
     text-shadow: yellow 1px 1px, yellow -1px 1px, yellow -1px -1px, yellow 1px -1px;
@@ -90,4 +94,17 @@ body{
     border: 8px solid yellow;
     border-radius: 5em;
     background-color: transparent;
+}
+.game-over01 {
+    justify-content: center;
+    font-family: "Space age";
+    text-shadow: red 1px 1px, red -1px 1px, red -1px -1px, red 1px -1px;
+
+}
+#gameOver{
+    display: none;
+}
+#video {
+    display: flex;
+    justify-content: center;
 }

@@ -8,16 +8,24 @@
 </head>
 <body>
     <h1>SPACE INVADERS</h1>
+   
 
     <h3>Score :</h3>
-
     
     <div class="jeu"></div>
+
+    <div id="gameOver">
+        <h1 class="game-over01">Game over</h1>
+        <div id="video">
+            <video autoplay onloadeddata="this.play();"  playsinline width="900px" height="600px">
+                <source src="/ressources/game_over.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
 
     <div class="start-button">
         <button class="start-game-button">Start Game</button>
     </div>
-    
 
     <script src="main.js"></script>
 </body>

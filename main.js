@@ -52,7 +52,7 @@ document.addEventListener("keydown", function(event) {
 
         case "ArrowUp":
             carres[posShooter].classList.remove("shooter")
-            if (posShooter - height >= 0 && posShooter > 360) posShooter -= 20
+            if (posShooter - height >= 0 && posShooter > 0) posShooter -= 20 // 360 de base
             carres[posShooter].classList.add("shooter")
             break;
 
@@ -151,3 +151,17 @@ function shootBullets(){
     }
     let bulletId = setInterval(moveBullets, 200);
 }
+
+let jeuHTML = document.getElementsByClassName("jeu")[0];
+let gameOverHTML = document.getElementById("gameOver");
+function gameOver(){    
+
+    if(carres[posShooter].classList.contains("invader")){
+        jeuHTML.style.display = "none";
+        gameOverHTML.style.display = "block";
+    }
+}
+
+setInterval(() => {
+    gameOver()
+}, 100);
