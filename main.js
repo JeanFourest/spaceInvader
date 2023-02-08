@@ -146,7 +146,6 @@ function shootBullets(){
             carres[posBullet].classList.remove("bullet");
             carres[posBullet].classList.add("boom")
 
-            setTimeout(()=> carres[posBullet].classList.remove('boom'), 300)
             clearInterval(bulletId);
         }
 
