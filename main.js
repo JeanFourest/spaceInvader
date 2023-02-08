@@ -111,7 +111,7 @@ function bougerAliens() {
             direction = "left";
             setTimeout(() => {
                 bougerAliensDown();
-            }, 800);
+            }, 400);
         }
 
     } else {
@@ -120,12 +120,12 @@ function bougerAliens() {
             direction = "right";
             setTimeout(() => {
                 bougerAliensDown();
-            }, 800);
+            }, 400);
         }
     }
 }
 
-let aliensId = setInterval(bougerAliens, 1600);
+let aliensId = setInterval(bougerAliens, 800);
 
 function shootBullets(){
     let posBullet = posShooter;
@@ -151,3 +151,14 @@ function shootBullets(){
     }
     let bulletId = setInterval(moveBullets, 200);
 }
+
+function victoire(){
+    if(aliens.length == 0){
+        //victoire decor + terminer jeu
+        console.log("YAHOO")
+    }
+}
+
+setInterval(() => {
+    victoire();
+}, 100);
