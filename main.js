@@ -52,7 +52,7 @@ document.addEventListener("keydown", function(event) {
 
         case "ArrowUp":
             carres[posShooter].classList.remove("shooter")
-            if (posShooter - height >= 0 && posShooter > 0) posShooter -= 20 // 360 de base
+            if (posShooter - height >= 0 && posShooter > 360) posShooter -= 20
             carres[posShooter].classList.add("shooter")
             break;
 
@@ -111,7 +111,7 @@ function bougerAliens() {
             direction = "left";
             setTimeout(() => {
                 bougerAliensDown();
-            }, 800);
+            }, 400);
         }
 
     } else {
@@ -120,12 +120,12 @@ function bougerAliens() {
             direction = "right";
             setTimeout(() => {
                 bougerAliensDown();
-            }, 800);
+            }, 400);
         }
     }
 }
 
-let aliensId = setInterval(bougerAliens, 1600);
+let aliensId = setInterval(bougerAliens, 800);
 
 function shootBullets(){
     let posBullet = posShooter;
@@ -152,16 +152,13 @@ function shootBullets(){
     let bulletId = setInterval(moveBullets, 200);
 }
 
-let jeuHTML = document.getElementsByClassName("jeu")[0];
-let gameOverHTML = document.getElementById("gameOver");
-function gameOver(){    
-
-    if(carres[posShooter].classList.contains("invader")){
-        jeuHTML.style.display = "none";
-        gameOverHTML.style.display = "block";
+function victoire(){
+    if(aliens.length == 0){
+        document.getElementsByClassName("jeu")[0].style.display = "none"
+        document.getElementById("victoire").style.display = "block";
     }
 }
 
 setInterval(() => {
-    gameOver()
+    victoire();
 }, 100);
