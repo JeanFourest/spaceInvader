@@ -52,7 +52,7 @@ document.addEventListener("keydown", function(event) {
 
         case "ArrowUp":
             carres[posShooter].classList.remove("shooter")
-            if (posShooter - height >= 0 && posShooter > 0) posShooter -= 20
+            if (posShooter - height >= 0 && posShooter > 360) posShooter -= 20
             carres[posShooter].classList.add("shooter")
             break;
 
