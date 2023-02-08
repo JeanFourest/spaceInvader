@@ -59,12 +59,12 @@ body{
 }
 
 .bullet{
-    background-image: url("/ressources/lazer.webp");
+    background-image: url("/ressources/red-laser.png");
     background-position: center;
     background-size: contain;
     width: 25px;
     height: 25px;
-    
+    rotate: 90deg;
 }
 
 .start-button{

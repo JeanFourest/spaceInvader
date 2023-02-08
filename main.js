@@ -125,7 +125,7 @@ function bougerAliens() {
     }
 }
 
-setInterval(bougerAliens, 1600);
+let aliensId = setInterval(bougerAliens, 1600);
 
 function shootBullets(){
     let posBullet = posShooter;
@@ -136,6 +136,14 @@ function shootBullets(){
             clearInterval(bulletId);
         }
         carres[posBullet].classList.add("bullet");
+
+        if(carres[posBullet].classList.contains("invader")){
+            carres[posBullet].classList.remove("invader");
+            carres[posBullet].classList.remove("bullet");
+
+            clearInterval(bulletId);
+        }
+
     }
-    let bulletId = setInterval(moveBullets, 400);
+    let bulletId = setInterval(moveBullets, 200);
 }
