@@ -139,6 +139,10 @@ function shootBullets(){
 
         if(carres[posBullet].classList.contains("invader")){
             carres[posBullet].classList.remove("invader");
+            
+            let index = aliens.indexOf(posBullet);
+            aliens.splice(index, 1);
+
             carres[posBullet].classList.remove("bullet");
 
             clearInterval(bulletId);
