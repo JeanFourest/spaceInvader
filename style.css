@@ -1,7 +1,7 @@
 @font-face {
     font-family: "Star Wars";
     src: url("ressources/SfDistantGalaxyAlternate-OE4d.ttf");
-  }
+}
   
 h1 {
     font-family: "Star Wars";
@@ -50,6 +50,16 @@ body{
 
 .shooter{
     background-image: url("/ressources/vaisseau.png");
+    background-position: center;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    rotate: 180deg;
+    margin: 5px;
+}
+
+.boom{
+    background-image: url("/ressources/explosion.png");
     background-position: center;
     background-size: contain;
     width: 20px;
