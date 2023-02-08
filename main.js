@@ -9,7 +9,7 @@ for(let i = 0; i < 400; i++){
 
 const carres = Array.from(document.querySelectorAll(".jeu div"))
 
-const aliens = [
+let aliens = [
     0,1,2,3,4,5,6,7,8,9,10,11,
     20,21,22,23,24,25,26,27,28,29,30,31,
     40,41,42,43,44,45,46,47,48,49,50,51
@@ -154,10 +154,23 @@ function shootBullets(){
 
 function victoire(){
     if(aliens.length == 0){
-        document.getElementsByClassName("jeu")[0].style.display = "none"
+        let SoundGame = new Audio();
+        SoundGame.src = "/ressources/Never_gonna_Meow_you_up.mp3";
+        SoundGame.play;
+        document.getElementsByClassName("jeu")[0].style.display = "none" //en wrap de base
         document.getElementById("victoire").style.display = "block";
     }
 }
+
+let restartButt = document.getElementById("restartGame");
+restartButt.addEventListener("click", ()=>{
+    console.log("restart")
+
+    
+});
+
+
+
 
 setInterval(() => {
     victoire();
