@@ -52,7 +52,7 @@ document.addEventListener("keydown", function(event) {
 
         case "ArrowUp":
             carres[posShooter].classList.remove("shooter")
-            if (posShooter - height >= 0 && posShooter > 360) posShooter -= 20
+            if (posShooter - height >= 0 && posShooter > 0) posShooter -= 20
             carres[posShooter].classList.add("shooter")
             break;
 
@@ -154,11 +154,19 @@ function shootBullets(){
 
 function victoire(){
     if(aliens.length == 0){
-        document.getElementsByClassName("jeu")[0].style.display = "none"
+        document.getElementsByClassName("jeu")[0].style.display = "none";
         document.getElementById("victoire").style.display = "block";
+    }
+}
+
+function gameOver(){
+    if(carres[posShooter].classList.contains("invader")){
+        document.getElementsByClassName("jeu")[0].style.display = "none";
+        document.getElementById("gameOver").style.display = "flex"
     }
 }
 
 setInterval(() => {
     victoire();
+    gameOver();
 }, 100);

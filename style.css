@@ -103,8 +103,10 @@ body{
 }
 #gameOver{
     display: none;
+    flex-direction: column;
 }
 #video {
     display: flex;
+    width: 100%;
     justify-content: center;
 }
