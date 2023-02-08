@@ -31,7 +31,6 @@ body{
     display: flex;
     flex-wrap: wrap;
     border: 1px solid white;
-    display: none;
 }
 
 .jeu div{
@@ -93,10 +92,10 @@ body{
     background-color: transparent;
 }
 
-.victoire{
+#victoire{
     width: 600px;
     height: 600px;
     margin: auto;
-    display: block;
     border: 1px solid white;
+    display: none;
 }

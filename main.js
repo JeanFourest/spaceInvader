@@ -154,8 +154,8 @@ function shootBullets(){
 
 function victoire(){
     if(aliens.length == 0){
-        //victoire decor + terminer jeu
-        console.log("YAHOO")
+        document.getElementsByClassName("jeu")[0].style.display = "none"
+        document.getElementById("victoire").style.display = "block";
     }
 }
 
