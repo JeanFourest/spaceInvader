@@ -166,11 +166,8 @@ function victoire(){
     }
 }
 
-let restartButt = document.getElementById("restartGame");
-restartButt.addEventListener("click", ()=>{
-    console.log("restart")
-
-    
+document.getElementById("restartGame").addEventListener("click", ()=>{
+    location.reload();    
 });
 
 
