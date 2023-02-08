@@ -152,13 +152,17 @@ function shootBullets(){
     let bulletId = setInterval(moveBullets, 200);
 }
 
+let audioOnce = 0;
 function victoire(){
     if(aliens.length == 0){
-        let SoundGame = new Audio();
-        SoundGame.src = "/ressources/Never_gonna_Meow_you_up.mp3";
-        SoundGame.play;
-        document.getElementsByClassName("jeu")[0].style.display = "none" //en wrap de base
-        document.getElementById("victoire").style.display = "block";
+        if(audioOnce == 0){
+            let SoundGame = new Audio();
+            SoundGame.src = "/ressources/Never_gonna_Meow_you_up.mp3";
+            SoundGame.play();
+            document.getElementsByClassName("jeu")[0].style.display = "none" //en wrap de base
+            document.getElementById("victoire").style.display = "block";
+        }
+        audioOnce++;
     }
 }
 
