@@ -23,7 +23,6 @@ let aliens = [
 
 ]
 
-const bullets = []
 
 function draw(){
     for(let i = 0; i < aliens.length; i++){
@@ -193,8 +192,50 @@ document.getElementById("restartGame").addEventListener("click", ()=>{
 });
 
 
+function aliensTire(){
+    let selectedAlien = aliens[Math.floor(Math.random()*aliens.length)];
+    let alienShootChoice = Math.floor(Math.random() * 3);
+
+    if(alienShootChoice == 0){
+        var posBulletAlien = selectedAlien;
+    }
+
+    function bulletAlienMove(){
+        carres[posBulletAlien].classList.remove("bulletAliens")
+        posBulletAlien += 20;
+        if (posBulletAlien<0){
+            clearInterval(bulletAlienId);
+        }
+        carres[posBulletAlien].classList.add("bulletAliens")
+
+        if(carres[posBulletAlien].classList.contains("shooter")){
+            carres[posBulletAlien].classList.remove("shooter");
+            
+            soundDeath.cloneNode().play();
+
+            setTimeout(() => {
+                window.location.href="game_over.html";
+            }, 1000);
+
+            setTimeout(()=> carres[posBulletAlien].classList.remove('boom'), 300);
+            clearInterval(bulletAlienId);
+        }
+    }
+    let bulletAlienId = setInterval(bulletAlienMove, 200);
+}
+
+
+function gameOver(){
+    if(carres[posShooter].classList.contains("invader")){
+        window.location.href="game_over.html";
+    }
+
+
+}
 
 
 setInterval(() => {
     victoire();
+    aliensTire();
+    gameOver();
 }, 100);

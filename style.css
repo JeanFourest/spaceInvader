@@ -2,6 +2,10 @@
     font-family: "Star Wars";
     src: url("ressources/SfDistantGalaxyAlternate-OE4d.ttf");
 }
+@font-face {
+    font-family: "Space age";
+    src: url("ressources/space age.ttf");
+}
   
 h1 {
     font-family: "Star Wars";
@@ -78,6 +82,16 @@ body{
     rotate: 90deg;
 }
 
+.bulletAliens{
+    background-image: url("/ressources/AlienLaserBullet2.png");
+    background-position: center;
+    background-size: contain;
+    width: 25px;
+    height: 25px;
+    rotate: 90deg;
+
+}
+
 .start-button{
     display: flex;
     justify-content: center;
@@ -110,4 +124,47 @@ body{
     margin: auto;
     border: 1px solid white;
     display: none;
+}
+
+.game-over01 {
+    justify-content: center;
+    font-family: "Space age";
+    text-shadow: red 1px 1px, red -1px 1px, red -1px -1px, red 1px -1px;
+}
+
+#gameOver{
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+
+#video {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.Restart01 {
+    display: flex;
+    font-family: "Space age";
+    text-shadow: red 1px 1px, red -1px 1px, red -1px -1px, red 1px -1px;
+    justify-content: center;
+    font-size: 50px;
+    background: none;
+    border: none;
+}
+
+.Restart01:hover {
+    padding: 0px 15px;
+    cursor: pointer;
+    border: 10px solid red;
+    border-radius: 5em;
+    background-color: transparent;
+}
+
+#restarted {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }
