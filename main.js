@@ -1,4 +1,5 @@
-document.getElementsByClassName("start-game-button")[0].addEventListener("click", ()=>{
+//EASY MODE==================================================================================================================
+document.getElementById("ez").addEventListener("click", ()=>{
 
     document.addEventListener("keydown", function(event) {
         switch(event.code){
@@ -13,7 +14,7 @@ document.getElementsByClassName("start-game-button")[0].addEventListener("click"
                 if (posShooter % width < width -1) posShooter +=1
                 carres[posShooter].classList.add("shooter")
                 break;
-    
+
             case "ArrowUp":
                 carres[posShooter].classList.remove("shooter")
                 if (posShooter - height >= 0 && posShooter > 360) posShooter -= 20
@@ -65,14 +66,273 @@ document.getElementsByClassName("start-game-button")[0].addEventListener("click"
 
 setInterval(bougerAliens, 600);//augmente le temps pour plus de facilite
 
+function aliensTire(){
+    let selectedAlien = aliens[Math.floor(Math.random()*aliens.length)];
+    let alienShootChoice = Math.floor(Math.random() * 3);
+
+    if(alienShootChoice == 0){
+        if(!shootingAliens){
+
+            shootingAliens = true;
+            setTimeout(function () {
+                shootingAliens = false;
+                
+            }, 300); //reduit le temps pour plus de difficulte 
+            var posBulletAlien = selectedAlien;
+
+        }        
+    }
+
+    function bulletAlienMove(){
+        carres[posBulletAlien].classList.remove("bulletAliens")
+        posBulletAlien += 20;
+        if (posBulletAlien<0){
+            clearInterval(bulletAlienId);
+        }
+        carres[posBulletAlien].classList.add("bulletAliens")
+
+        if(carres[posBulletAlien].classList.contains("shooter")){            
+            window.location.href="game_over.html";
+        }
+    }
+    let bulletAlienId = setInterval(bulletAlienMove, 200);
+}
+
+setInterval(() => {
+    victoire();
+    gameOver();
+}, 100);
+
+document.getElementsByClassName("decorButton")[0].style.display = "none";
+document.getElementsByClassName("decorButton")[1].style.display = "none";
+document.getElementsByClassName("decorButton")[2].style.display = "none";
+
+});
+
+//MEDIUM MODE================================================================================================================
+document.getElementById("medium").addEventListener("click", ()=>{
+
+    document.addEventListener("keydown", function(event) {
+        switch(event.code){
+            case "ArrowLeft":
+                carres[posShooter].classList.remove("shooter")
+                if (posShooter % width !==0) posShooter -=1
+                carres[posShooter].classList.add("shooter")
+                break;
+            
+            case "ArrowRight":
+                carres[posShooter].classList.remove("shooter")
+                if (posShooter % width < width -1) posShooter +=1
+                carres[posShooter].classList.add("shooter")
+                break;
+
+            case "ArrowUp":
+                carres[posShooter].classList.remove("shooter")
+                if (posShooter - height >= 0 && posShooter > 360) posShooter -= 20
+                carres[posShooter].classList.add("shooter")
+                break;
+    
+            case "ArrowDown":
+                carres[posShooter].classList.remove("shooter")
+                if (posShooter + height < height * height) posShooter += 20
+                carres[posShooter].classList.add("shooter")
+                break;
+    
+            case "Space":
+                if(!shooting){
+                    shooting = true;
+                    setTimeout(function () {
+                        shooting = false;
+                        
+                    }, 500);//reduit le temps pour plus de facilite
+                    soundBullet.cloneNode().play();
+                    shootBullets();
+                }
+                
+            break;
+        }
+    });
+
+    function bougerAliens() {
+    
+    if (direction === "right") {
+        bougerAliensDroite();
+        if (aliens.some(alien => (alien + 1) % width === 0)) {
+            direction = "left";
+            setTimeout(() => {
+                bougerAliensDown();
+            }, 200);//augmente le temps pour plus de facilite
+        }
+
+    } else {
+        bougerAliensGauche();
+        if (aliens.some(alien => alien % width === 0)) {
+            direction = "right";
+            setTimeout(() => {
+                bougerAliensDown();
+            }, 200);//augmente le temps pour plus de facilite
+        }
+    }
+}
+
+setInterval(bougerAliens, 400);//augmente le temps pour plus de facilite
+
+function aliensTire(){
+    let selectedAlien = aliens[Math.floor(Math.random()*aliens.length)];
+    let alienShootChoice = Math.floor(Math.random() * 3);
+
+    if(alienShootChoice == 0){
+        if(!shootingAliens){
+
+            shootingAliens = true;
+            setTimeout(function () {
+                shootingAliens = false;
+                
+            }, 300); //reduit le temps pour plus de difficulte 
+            var posBulletAlien = selectedAlien;
+
+        }        
+    }
+
+    function bulletAlienMove(){
+        carres[posBulletAlien].classList.remove("bulletAliens")
+        posBulletAlien += 20;
+        if (posBulletAlien<0){
+            clearInterval(bulletAlienId);
+        }
+        carres[posBulletAlien].classList.add("bulletAliens")
+
+        if(carres[posBulletAlien].classList.contains("shooter")){            
+            window.location.href="game_over.html";
+        }
+    }
+    let bulletAlienId = setInterval(bulletAlienMove, 200);
+}
+
 setInterval(() => {
     victoire();
     aliensTire();
     gameOver();
 }, 100);
 
-document.getElementsByClassName("start-game-button")[0].style.display = "none";
+document.getElementsByClassName("decorButton")[0].style.display = "none";
+document.getElementsByClassName("decorButton")[1].style.display = "none";
+document.getElementsByClassName("decorButton")[2].style.display = "none";
 });
+
+
+//HARD MODE==================================================================================================================
+document.getElementById("hard").addEventListener("click", ()=>{
+
+    document.addEventListener("keydown", function(event) {
+        switch(event.code){
+            case "ArrowLeft":
+                carres[posShooter].classList.remove("shooter")
+                if (posShooter % width !==0) posShooter -=1
+                carres[posShooter].classList.add("shooter")
+                break;
+            
+            case "ArrowRight":
+                carres[posShooter].classList.remove("shooter")
+                if (posShooter % width < width -1) posShooter +=1
+                carres[posShooter].classList.add("shooter")
+                break;
+
+            case "ArrowUp":
+                carres[posShooter].classList.remove("shooter")
+                if (posShooter - height >= 0 && posShooter > 360) posShooter -= 20
+                carres[posShooter].classList.add("shooter")
+                break;
+    
+            case "ArrowDown":
+                carres[posShooter].classList.remove("shooter")
+                if (posShooter + height < height * height) posShooter += 20
+                carres[posShooter].classList.add("shooter")
+                break;
+    
+            case "Space":
+                if(!shooting){
+                    shooting = true;
+                    setTimeout(function () {
+                        shooting = false;
+                        
+                    }, 500);//reduit le temps pour plus de facilite
+                    soundBullet.cloneNode().play();
+                    shootBullets();
+                }
+                
+            break;
+        }
+    });
+
+    function bougerAliens() {
+    
+    if (direction === "right") {
+        bougerAliensDroite();
+        if (aliens.some(alien => (alien + 1) % width === 0)) {
+            direction = "left";
+            setTimeout(() => {
+                bougerAliensDown();
+            }, 200);//augmente le temps pour plus de facilite
+        }
+
+    } else {
+        bougerAliensGauche();
+        if (aliens.some(alien => alien % width === 0)) {
+            direction = "right";
+            setTimeout(() => {
+                bougerAliensDown();
+            }, 200);//augmente le temps pour plus de facilite
+        }
+    }
+}
+
+setInterval(bougerAliens, 400);//augmente le temps pour plus de facilite
+
+function aliensTire(){
+    let selectedAlien = aliens[Math.floor(Math.random()*aliens.length)];
+    let alienShootChoice = Math.floor(Math.random() * 2);
+
+        if(!shootingAliens){
+
+        shootingAliens = true;
+        setTimeout(function () {
+            shootingAliens = false;
+            
+        }, 100); //reduit le temps pour plus de difficulte 
+        var posBulletAlien = selectedAlien;
+
+        }        
+    
+
+    function bulletAlienMove(){
+        carres[posBulletAlien].classList.remove("bulletAliens")
+        posBulletAlien += 20;
+        if (posBulletAlien<0){
+            clearInterval(bulletAlienId);
+        }
+        carres[posBulletAlien].classList.add("bulletAliens")
+
+        if(carres[posBulletAlien].classList.contains("shooter")){            
+            window.location.href="game_over.html";
+        }
+    }
+    let bulletAlienId = setInterval(bulletAlienMove, 200);
+}
+
+setInterval(() => {
+    victoire();
+    aliensTire();
+    gameOver();
+}, 100);
+
+document.getElementsByClassName("decorButton")[0].style.display = "none";
+document.getElementsByClassName("decorButton")[1].style.display = "none";
+document.getElementsByClassName("decorButton")[2].style.display = "none";
+});
+
+//===========================================================================================================================
+
 
 const jeu = document.querySelector(".jeu");
 let width = 20;
@@ -202,39 +462,6 @@ function victoire(){
 document.getElementById("restartGame").addEventListener("click", ()=>{
     location.reload();
 });
-
-
-function aliensTire(){
-    let selectedAlien = aliens[Math.floor(Math.random()*aliens.length)];
-    let alienShootChoice = Math.floor(Math.random() * 3);
-
-    if(alienShootChoice == 0){
-        if(!shootingAliens){
-
-            shootingAliens = true;
-            setTimeout(function () {
-                shootingAliens = false;
-                
-            }, 300); //reduit le temps pour plus de difficulte 
-            var posBulletAlien = selectedAlien;
-
-        }        
-    }
-
-    function bulletAlienMove(){
-        carres[posBulletAlien].classList.remove("bulletAliens")
-        posBulletAlien += 20;
-        if (posBulletAlien<0){
-            clearInterval(bulletAlienId);
-        }
-        carres[posBulletAlien].classList.add("bulletAliens")
-
-        if(carres[posBulletAlien].classList.contains("shooter")){            
-            window.location.href="game_over.html";
-        }
-    }
-    let bulletAlienId = setInterval(bulletAlienMove, 200);
-}
 
 
 function gameOver(){
