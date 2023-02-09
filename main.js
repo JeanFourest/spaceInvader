@@ -75,7 +75,7 @@ document.addEventListener("keydown", function(event) {
                 setTimeout(function () {
                     shooting = false;
                     
-                }, 1000);//reduit le temps pour plus de facilite
+                }, 500);//reduit le temps pour plus de facilite
                 soundBullet.cloneNode().play();
                 shootBullets();
             }
