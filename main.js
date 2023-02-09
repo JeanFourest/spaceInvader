@@ -1,3 +1,37 @@
+document.getElementsByClassName("start-game-button")[0].addEventListener("click", ()=>{
+    function bougerAliens() {
+    
+    if (direction === "right") {
+        bougerAliensDroite();
+        if (aliens.some(alien => (alien + 1) % width === 0)) {
+            direction = "left";
+            setTimeout(() => {
+                bougerAliensDown();
+            }, 300);//augmente le temps pour plus de facilite
+        }
+
+    } else {
+        bougerAliensGauche();
+        if (aliens.some(alien => alien % width === 0)) {
+            direction = "right";
+            setTimeout(() => {
+                bougerAliensDown();
+            }, 300);//augmente le temps pour plus de facilite
+        }
+    }
+}
+
+setInterval(bougerAliens, 600);//augmente le temps pour plus de facilite
+
+setInterval(() => {
+    victoire();
+    aliensTire();
+    gameOver();
+}, 100);
+
+document.getElementsByClassName("start-game-button")[0].style.display = "none";
+});
+
 const jeu = document.querySelector(".jeu");
 let width = 20;
 let height = 20;
@@ -21,7 +55,6 @@ let aliens = [
     0,1,2,3,4,5,6,7,8,9,10,11,
     20,21,22,23,24,25,26,27,28,29,30,31,
     40,41,42,43,44,45,46,47,48,49,50,51
-
 ]
 
 
@@ -122,29 +155,6 @@ function bougerAliensDown(){
 
 let direction = "right";
 
-function bougerAliens() {
-    
-    if (direction === "right") {
-        bougerAliensDroite();
-        if (aliens.some(alien => (alien + 1) % width === 0)) {
-            direction = "left";
-            setTimeout(() => {
-                bougerAliensDown();
-            }, 200);//augmente le temps pour plus de facilite
-        }
-
-    } else {
-        bougerAliensGauche();
-        if (aliens.some(alien => alien % width === 0)) {
-            direction = "right";
-            setTimeout(() => {
-                bougerAliensDown();
-            }, 200);//augmente le temps pour plus de facilite
-        }
-    }
-}
-
-let aliensId = setInterval(bougerAliens, 400);//augmente le temps pour plus de facilite
 
 function shootBullets(){
     let posBullet = posShooter;
@@ -189,7 +199,7 @@ function victoire(){
 }
 
 document.getElementById("restartGame").addEventListener("click", ()=>{
-    location.reload();    
+    location.reload();
 });
 
 
@@ -236,10 +246,3 @@ function gameOver(){
     }
 
 }
-
-
-setInterval(() => {
-    victoire();
-    aliensTire();
-    gameOver();
-}, 100);
