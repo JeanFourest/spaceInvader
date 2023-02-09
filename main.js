@@ -165,10 +165,13 @@ function victoire(){
 function gameOver(){
     if(carres[posShooter].classList.contains("invader")){
         document.getElementsByClassName("jeu")[0].style.display = "none";
-        document.getElementById("gameOver").style.display = "flex"
         window.location.href="game_over.html"; 
+        
+        
     }
 }
+
+
 
 setInterval(() => {
     victoire();
