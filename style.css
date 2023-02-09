@@ -8,6 +8,7 @@ h1 {
     text-shadow: yellow 1px 1px, yellow -1px 1px, yellow -1px -1px, yellow 1px -1px;
     font-size: 4em;
     text-align: center;
+    margin: 15px;
 }
 
 h3{
@@ -81,7 +82,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 25px;
     
 }
 
@@ -92,12 +93,21 @@ body{
     text-align: center;
     background: transparent;
     border: none;
-    padding: 6px;
+    margin: 0px 10px;
+    padding: 10px;
 }
 
 .start-game-button:hover{
     cursor: pointer;
-    border: 8px solid yellow;
+    border: 5px solid yellow;
     border-radius: 5em;
     background-color: transparent;
+}
+
+#victoire{
+    width: 600px;
+    height: 600px;
+    margin: auto;
+    border: 1px solid white;
+    display: none;
 }
