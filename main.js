@@ -33,9 +33,6 @@ function draw(){
     }
 }
 
-function drawBullet(){
-
-}
 
 let posShooter = 389;
 let posBullet = posShooter;
@@ -77,7 +74,7 @@ document.addEventListener("keydown", function(event) {
                 setTimeout(function () {
                     shooting = false;
                     
-                }, 1000);
+                }, 100);
                 soundBullet.cloneNode().play();
                 shootBullets();
             }
@@ -148,6 +145,22 @@ function bougerAliens() {
 
 let aliensId = setInterval(bougerAliens, 800);
 
+/*
+function updateScore(){
+    let scoreId = document.getElementById("score");
+    //score = localStorage.getItem("score");
+    document.querySelector(".score").textContent = score;
+    highscore = localStorage.getItem("score") || 0;
+    //scoreId.innerText = "Score: " + score;
+}
+
+function updateHighScore(){
+    highscore = score;
+    //let highScoreId = document.getElementById("highscore");
+    document.querySelector(".highscore").textContent = highscore;
+    //highScoreId.innerText = "High Score: " + highscore;
+}*/
+
 function shootBullets(){
     let posBullet = posShooter;
     function moveBullets(){
@@ -172,66 +185,45 @@ function shootBullets(){
             clearInterval(bulletId);
 
             score += 100;
-            updateScore();
-
-            if (score > highScore) {
-                highScore = score;
-                localStorage.setItem("highScore", highScore);
-                updateHighScore();
-            }
+            //updateScore();
+            document.querySelector(".score").textContent = score;
+            
         }
 
     }
     let bulletId = setInterval(moveBullets, 200);
 }
 
-function updateScore(){
-    let scoreId = document.getElementById("score");
-    scoreId.innerText = "Score: " + score;
-  
-    localStorage.setItem("score", score);
+function saveHighScore(highscore){
+    localStorage.setItem("highscore", highscore)
 }
-
-function updateHighScore(){
-    let highScoreId = document.getElementById("highScore");
-    highScoreId.innerText = "High Score: " + highScore;
-}
-
-
-
-function updateScore(){
-    let scoreId = document.getElementById("score");
-    scoreId.innerText = "Score: " + score;
-  
-    localStorage.setItem("score", score);
-}
-
-function updateHighScore(){
-    let highScoreId = document.getElementById("highScore");
-    highScoreId.innerText = "High Score: " + highScore;
-}
-
-
 
 let audioOnce = 0;
 function victoire(){
     if(aliens.length == 0){
         if(audioOnce == 0){
+
+            if (score > highscore) {
+                highscore = score;
+                document.querySelector(".highscore").textContent = localStorage.getItem("highscore");
+                saveHighScore();
+            }
+
             let SoundGame = new Audio();
             SoundGame.src = "/ressources/Never_gonna_Meow_you_up.mp3";
             SoundGame.play();
             document.getElementsByClassName("jeu")[0].style.display = "none" //en wrap de base
             document.getElementById("victoire").style.display = "block";
+
         }
         audioOnce++;
+
     }
 }
 
 document.getElementById("restartGame").addEventListener("click", ()=>{
-    location.reload();    
+    location.reload();
 });
-
-
 
 
 setInterval(() => {
