@@ -1,4 +1,46 @@
 document.getElementsByClassName("start-game-button")[0].addEventListener("click", ()=>{
+
+    document.addEventListener("keydown", function(event) {
+        switch(event.code){
+            case "ArrowLeft":
+                carres[posShooter].classList.remove("shooter")
+                if (posShooter % width !==0) posShooter -=1
+                carres[posShooter].classList.add("shooter")
+                break;
+            
+            case "ArrowRight":
+                carres[posShooter].classList.remove("shooter")
+                if (posShooter % width < width -1) posShooter +=1
+                carres[posShooter].classList.add("shooter")
+                break;
+    
+            case "ArrowUp":
+                carres[posShooter].classList.remove("shooter")
+                if (posShooter - height >= 0 && posShooter > 360) posShooter -= 20
+                carres[posShooter].classList.add("shooter")
+                break;
+    
+            case "ArrowDown":
+                carres[posShooter].classList.remove("shooter")
+                if (posShooter + height < height * height) posShooter += 20
+                carres[posShooter].classList.add("shooter")
+                break;
+    
+            case "Space":
+                if(!shooting){
+                    shooting = true;
+                    setTimeout(function () {
+                        shooting = false;
+                        
+                    }, 500);//reduit le temps pour plus de facilite
+                    soundBullet.cloneNode().play();
+                    shootBullets();
+                }
+                
+            break;
+        }
+    });
+
     function bougerAliens() {
     
     if (direction === "right") {
@@ -75,47 +117,6 @@ carres[posShooter].classList.add("shooter")
 
 draw()
 
-
-document.addEventListener("keydown", function(event) {
-    switch(event.code){
-        case "ArrowLeft":
-            carres[posShooter].classList.remove("shooter")
-            if (posShooter % width !==0) posShooter -=1
-            carres[posShooter].classList.add("shooter")
-            break;
-        
-        case "ArrowRight":
-            carres[posShooter].classList.remove("shooter")
-            if (posShooter % width < width -1) posShooter +=1
-            carres[posShooter].classList.add("shooter")
-            break;
-
-        case "ArrowUp":
-            carres[posShooter].classList.remove("shooter")
-            if (posShooter - height >= 0 && posShooter > 360) posShooter -= 20
-            carres[posShooter].classList.add("shooter")
-            break;
-
-        case "ArrowDown":
-            carres[posShooter].classList.remove("shooter")
-            if (posShooter + height < height * height) posShooter += 20
-            carres[posShooter].classList.add("shooter")
-            break;
-
-        case "Space":
-            if(!shooting){
-                shooting = true;
-                setTimeout(function () {
-                    shooting = false;
-                    
-                }, 500);//reduit le temps pour plus de facilite
-                soundBullet.cloneNode().play();
-                shootBullets();
-            }
-            
-        break;
-    }
-});
 
 function deleteInvaders(){
     for(let i = 0; i < aliens.length; i++){
