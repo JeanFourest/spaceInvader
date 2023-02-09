@@ -59,6 +59,16 @@ body{
     margin: 5px;
 }
 
+.boom{
+    background-image: url("/ressources/explosion.png");
+    background-position: center;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    rotate: 180deg;
+    margin: 5px;
+}
+
 .bullet{
     background-image: url("/ressources/red-laser.png");
     background-position: center;

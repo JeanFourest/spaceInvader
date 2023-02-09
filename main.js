@@ -1,6 +1,13 @@
 const jeu = document.querySelector(".jeu");
 let width = 20;
 let height = 20;
+let shooting = false;
+
+let soundBullet = new Audio();
+soundBullet.src = "/ressources/Pewsoundeffect.mp3";
+
+let soundDeath = new Audio();
+soundDeath.src = "/ressources/boom.mp3";
 
 for(let i = 0; i < 400; i++){
     const carre = document.createElement("div");
@@ -61,9 +68,19 @@ document.addEventListener("keydown", function(event) {
             if (posShooter + height < height * height) posShooter += 20
             carres[posShooter].classList.add("shooter")
             break;
+
         case "Space":
-            shootBullets();
-            break;
+            if(!shooting){
+                shooting = true;
+                setTimeout(function () {
+                    shooting = false;
+                    
+                }, 1000);
+                soundBullet.cloneNode().play();
+                shootBullets();
+            }
+            
+        break;
     }
 });
 
@@ -76,6 +93,7 @@ function deleteInvaders(){
 
 function bougerAliensDroite(){
     deleteInvaders()
+    
 
     for(let i = 0; i < aliens.length; i++){
         aliens[i] += 1;
@@ -105,6 +123,7 @@ function bougerAliensDown(){
 let direction = "right";
 
 function bougerAliens() {
+    
     if (direction === "right") {
         bougerAliensDroite();
         if (aliens.some(alien => (alien + 1) % width === 0)) {
@@ -144,7 +163,10 @@ function shootBullets(){
             aliens.splice(index, 1);
 
             carres[posBullet].classList.remove("bullet");
+            carres[posBullet].classList.add("boom");
+            soundDeath.cloneNode().play();
 
+            setTimeout(()=> carres[posBullet].classList.remove('boom'), 300);
             clearInterval(bulletId);
         }
 
