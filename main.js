@@ -1,6 +1,8 @@
 const jeu = document.querySelector(".jeu");
 let width = 20;
 let height = 20;
+let game_over = false
+
 
 for(let i = 0; i < 400; i++){
     const carre = document.createElement("div");
@@ -52,7 +54,7 @@ document.addEventListener("keydown", function(event) {
 
         case "ArrowUp":
             carres[posShooter].classList.remove("shooter")
-            if (posShooter - height >= 0 && posShooter > 360) posShooter -= 20
+            if (posShooter - height >= 0 && posShooter > 0) posShooter -= 20
             carres[posShooter].classList.add("shooter")
             break;
 
@@ -159,10 +161,12 @@ function victoire(){
     }
 }
 
+
 function gameOver(){
     if(carres[posShooter].classList.contains("invader")){
         document.getElementsByClassName("jeu")[0].style.display = "none";
         document.getElementById("gameOver").style.display = "flex"
+        window.location.href="game_over.html"; 
     }
 }
 
@@ -170,3 +174,4 @@ setInterval(() => {
     victoire();
     gameOver();
 }, 100);
+
