@@ -2,6 +2,8 @@ const jeu = document.querySelector(".jeu");
 let width = 20;
 let height = 20;
 let shooting = false;
+let score = 0;
+let highscore = 0;
 
 let soundBullet = new Audio();
 soundBullet.src = "/ressources/Pewsoundeffect.mp3";
@@ -168,8 +170,31 @@ function shootBullets(){
 
             setTimeout(()=> carres[posBullet].classList.remove('boom'), 300);
             clearInterval(bulletId);
+
+            score += 100;
+            updateScore();
+
+            if (score > highScore) {
+                highScore = score;
+                localStorage.setItem("highScore", highScore);
+                updateHighScore();
+            }
         }
 
     }
     let bulletId = setInterval(moveBullets, 200);
 }
+
+function updateScore(){
+    let scoreId = document.getElementById("score");
+    scoreId.innerText = "Score: " + score;
+  
+    localStorage.setItem("score", score);
+}
+
+function updateHighScore(){
+    let highScoreId = document.getElementById("highScore");
+    highScoreId.innerText = "High Score: " + highScore;
+}
+
+
