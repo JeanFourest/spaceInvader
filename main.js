@@ -2,6 +2,7 @@ const jeu = document.querySelector(".jeu");
 let width = 20;
 let height = 20;
 let shooting = false;
+let shootingAliens = false;
 
 let soundBullet = new Audio();
 soundBullet.src = "/ressources/Pewsoundeffect.mp3";
@@ -74,7 +75,7 @@ document.addEventListener("keydown", function(event) {
                 setTimeout(function () {
                     shooting = false;
                     
-                }, 1000);
+                }, 1000);//reduit le temps pour plus de facilite
                 soundBullet.cloneNode().play();
                 shootBullets();
             }
@@ -129,7 +130,7 @@ function bougerAliens() {
             direction = "left";
             setTimeout(() => {
                 bougerAliensDown();
-            }, 400);
+            }, 200);//augmente le temps pour plus de facilite
         }
 
     } else {
@@ -138,12 +139,12 @@ function bougerAliens() {
             direction = "right";
             setTimeout(() => {
                 bougerAliensDown();
-            }, 400);
+            }, 200);//augmente le temps pour plus de facilite
         }
     }
 }
 
-let aliensId = setInterval(bougerAliens, 800);
+let aliensId = setInterval(bougerAliens, 400);//augmente le temps pour plus de facilite
 
 function shootBullets(){
     let posBullet = posShooter;
@@ -197,7 +198,16 @@ function aliensTire(){
     let alienShootChoice = Math.floor(Math.random() * 3);
 
     if(alienShootChoice == 0){
-        var posBulletAlien = selectedAlien;
+        if(!shootingAliens){
+
+            shootingAliens = true;
+            setTimeout(function () {
+                shootingAliens = false;
+                
+            }, 300); //reduit le temps pour plus de difficulte 
+            var posBulletAlien = selectedAlien;
+
+        }        
     }
 
     function bulletAlienMove(){
@@ -208,17 +218,8 @@ function aliensTire(){
         }
         carres[posBulletAlien].classList.add("bulletAliens")
 
-        if(carres[posBulletAlien].classList.contains("shooter")){
-            carres[posBulletAlien].classList.remove("shooter");
-            
-            soundDeath.cloneNode().play();
-
-            setTimeout(() => {
-                window.location.href="game_over.html";
-            }, 1000);
-
-            setTimeout(()=> carres[posBulletAlien].classList.remove('boom'), 300);
-            clearInterval(bulletAlienId);
+        if(carres[posBulletAlien].classList.contains("shooter")){            
+            window.location.href="game_over.html";
         }
     }
     let bulletAlienId = setInterval(bulletAlienMove, 200);
@@ -230,6 +231,9 @@ function gameOver(){
         window.location.href="game_over.html";
     }
 
+    if(aliens == 400){
+        window.location.href="game_over.html";
+    }
 
 }
 
