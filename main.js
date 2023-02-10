@@ -17,7 +17,7 @@ document.getElementById("ez").addEventListener("click", ()=>{
 
             case "ArrowUp":
                 carres[posShooter].classList.remove("shooter")
-                if (posShooter - height >= 0 && posShooter > 360) posShooter -= 20
+                if (posShooter - height >= 0 && posShooter > 360) posShooter -= 20 //360
                 carres[posShooter].classList.add("shooter")
                 break;
     
@@ -33,7 +33,7 @@ document.getElementById("ez").addEventListener("click", ()=>{
                     setTimeout(function () {
                         shooting = false;
                         
-                    }, 500);//reduit le temps pour plus de facilite
+                    }, 100);//reduit le temps pour plus de facilite 500
                     soundBullet.cloneNode().play();
                     shootBullets();
                 }
@@ -107,6 +107,8 @@ document.getElementsByClassName("decorButton")[0].style.display = "none";
 document.getElementsByClassName("decorButton")[1].style.display = "none";
 document.getElementsByClassName("decorButton")[2].style.display = "none";
 
+musiqueBackground.loop = true;
+musiqueBackground.play();
 });
 
 //MEDIUM MODE================================================================================================================
@@ -218,6 +220,9 @@ setInterval(() => {
 document.getElementsByClassName("decorButton")[0].style.display = "none";
 document.getElementsByClassName("decorButton")[1].style.display = "none";
 document.getElementsByClassName("decorButton")[2].style.display = "none";
+
+musiqueBackground.loop = true;
+musiqueBackground.play();
 });
 
 
@@ -291,7 +296,6 @@ setInterval(bougerAliens, 400);//augmente le temps pour plus de facilite
 
 function aliensTire(){
     let selectedAlien = aliens[Math.floor(Math.random()*aliens.length)];
-    let alienShootChoice = Math.floor(Math.random() * 2);
 
         if(!shootingAliens){
 
@@ -329,6 +333,9 @@ setInterval(() => {
 document.getElementsByClassName("decorButton")[0].style.display = "none";
 document.getElementsByClassName("decorButton")[1].style.display = "none";
 document.getElementsByClassName("decorButton")[2].style.display = "none";
+
+musiqueBackground.loop = true;
+musiqueBackground.play();
 });
 
 //===========================================================================================================================
@@ -340,11 +347,18 @@ let height = 20;
 let shooting = false;
 let shootingAliens = false;
 
+let SoundGame = new Audio();
+SoundGame.src = "/ressources/Never_gonna_Meow_you_up.mp3";
+
 let soundBullet = new Audio();
 soundBullet.src = "/ressources/Pewsoundeffect.mp3";
 
 let soundDeath = new Audio();
 soundDeath.src = "/ressources/boom.mp3";
+
+let musiqueBackground = new Audio();
+musiqueBackground.src = "/ressources/MusiqueArrierePlan.mp3";
+
 
 for(let i = 0; i < 400; i++){
     const carre = document.createElement("div");
@@ -448,12 +462,11 @@ function shootBullets(){
 let audioOnce = 0;
 function victoire(){
     if(aliens.length == 0){
+        musiqueBackground.pause();
         if(audioOnce == 0){
-            let SoundGame = new Audio();
-            SoundGame.src = "/ressources/Never_gonna_Meow_you_up.mp3";
-            SoundGame.play();
             document.getElementsByClassName("jeu")[0].style.display = "none" //en wrap de base
             document.getElementById("victoire").style.display = "block";
+            SoundGame.play()
         }
         audioOnce++;
     }
@@ -467,10 +480,12 @@ document.getElementById("restartGame").addEventListener("click", ()=>{
 function gameOver(){
     if(carres[posShooter].classList.contains("invader")){
         window.location.href="game_over.html";
+        musiqueBackground.pause();
     }
 
     if(aliens == 400){
         window.location.href="game_over.html";
+        musiqueBackground.pause();
     }
 
 }
