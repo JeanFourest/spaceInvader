@@ -11,6 +11,20 @@
    
 
     <h3>Score :</h3>
+    <h3 id="timer"></h3>
+
+    <script>
+      let count = 0;
+      const timerDisplay = document.getElementById("timer");
+      const intervalId = setInterval(function() {
+        count++;
+        timerDisplay.innerHTML ="timer : "+ count + " secondes";
+        if (carres[posShooter].classList.contains("invader")){
+            clearInterval(intervalId);
+        }
+        
+      }, 1000);
+    </script>
     
     <div class="jeu"></div>
 
@@ -20,6 +34,7 @@
     </div>
 
     <script src="main.js"></script>
+    
 
 </body>
 </html>
