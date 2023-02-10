@@ -278,7 +278,7 @@ document.getElementById("hard").addEventListener("click", ()=>{
             direction = "left";
             setTimeout(() => {
                 bougerAliensDown();
-            }, 150);//augmente le temps pour plus de facilite
+            }, 100);//augmente le temps pour plus de facilite
         }
 
     } else {
@@ -287,12 +287,12 @@ document.getElementById("hard").addEventListener("click", ()=>{
             direction = "right";
             setTimeout(() => {
                 bougerAliensDown();
-            }, 150);//augmente le temps pour plus de facilite
+            }, 100);//augmente le temps pour plus de facilite
         }
     }
 }
 
-setInterval(bougerAliens, 300);//augmente le temps pour plus de facilite
+setInterval(bougerAliens, 200);//augmente le temps pour plus de facilite
 
 function aliensTire(){
     let selectedAlien = aliens[Math.floor(Math.random()*aliens.length)];
