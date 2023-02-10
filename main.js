@@ -4,6 +4,8 @@ let height = 20;
 let shooting = false;
 let score = 0;
 let highscore = 0;
+let highScore = localStorage.getItem("highscore");
+document.querySelector(".highscore").textContent = highScore;
 
 let soundBullet = new Audio();
 soundBullet.src = "/ressources/Pewsoundeffect.mp3";
@@ -203,17 +205,21 @@ function victoire(){
     if(aliens.length == 0){
         if(audioOnce == 0){
 
-            if (score > highscore) {
-                highscore = score;
-                document.querySelector(".highscore").textContent = localStorage.getItem("highscore");
-                saveHighScore();
-            }
-
+            
             let SoundGame = new Audio();
             SoundGame.src = "/ressources/Never_gonna_Meow_you_up.mp3";
             SoundGame.play();
             document.getElementsByClassName("jeu")[0].style.display = "none" //en wrap de base
             document.getElementById("victoire").style.display = "block";
+
+            if (score > highscore) {
+                highscore = score;
+                localStorage.setItem("highscore", highscore);
+                document.querySelector(".highscore").textContent = highscore;
+                //saveHighScore();
+                
+            }
+
 
         }
         audioOnce++;
