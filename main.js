@@ -33,7 +33,7 @@ document.getElementById("ez").addEventListener("click", ()=>{
                     setTimeout(function () {
                         shooting = false;
                         
-                    }, 100);//reduit le temps pour plus de facilite 500
+                    }, 500);//reduit le temps pour plus de facilite 500
                     soundBullet.cloneNode().play();
                     shootBullets();
                 }
