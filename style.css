@@ -41,7 +41,7 @@ body{
 }
 
 .jeu{
-    margin: auto;
+    margin-left: 200px;
     width: 600px;
     height: 600px;
     background: url("ressources/space.gif");
