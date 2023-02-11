@@ -186,3 +186,8 @@ body{
     justify-content: center;
     margin-top: 10px;
 }
+
+.limits{
+    width: 25px;
+    height: 25px;
+}

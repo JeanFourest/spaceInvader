@@ -385,15 +385,18 @@ let aliens = [
     40,41,42,43,44,45,46,47,48,49,50,51
 ]
 
+let alienLimits = [399,398,397,396,395,394,393,392,391,390,389,388,387,386,385,384,383,382,381,380]
+
+function createAlienLimits(){
+    for(let i = 0; i < alienLimits.length; i++){
+        carres[alienLimits[i]].classList.add("limits")
+    }
+}
 
 function draw(){
     for(let i = 0; i < aliens.length; i++){
         carres[aliens[i]].classList.add("invader")
     }
-}
-
-function drawBullet(){
-
 }
 
 let posShooter = 389;
@@ -402,7 +405,16 @@ let posBullet = posShooter;
 carres[posShooter].classList.add("shooter")
 
 draw()
+createAlienLimits()
 
+function detectInvadLimit(){
+    for(let i = 0; i < aliens.length; i++){
+        if(carres[aliens[i]].classList.contains("limits")){
+            return true;
+        }
+    }
+    return false;
+}
 
 function deleteInvaders(){
     for(let i = 0; i < aliens.length; i++){
@@ -547,7 +559,7 @@ function gameOverEz(){
         }
     }
 
-    if(aliens == 400){
+    if(detectInvadLimit() == true){
         window.location.href="game_over.html";
         musiqueBackground.pause();
 
@@ -574,8 +586,8 @@ function gameOverM(){
         window.location.href="game_over.html";
     }
 
-    if(aliens == 400){
-        
+    if(detectInvadLimit() == true){
+        window.location.href="game_over.html";
         musiqueBackground.pause();
 
         if (score > highscoreM){
@@ -600,7 +612,7 @@ function gameOverH(){
         }
     }
 
-    if(aliens == 400){
+    if(detectInvadLimit() == true){
         window.location.href="game_over.html";
         musiqueBackground.pause();
 
