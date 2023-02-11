@@ -99,8 +99,8 @@ function aliensTire(){
 }
 
 setInterval(() => {
-    victoire();
-    gameOver();
+    victoireEz();
+    gameOverEz();
 }, 100);
 
 document.getElementsByClassName("decorButton")[0].style.display = "none";
@@ -212,9 +212,9 @@ function aliensTire(){
 }
 
 setInterval(() => {
-    victoire();
+    victoireM();
     aliensTire();
-    gameOver();
+    gameOverM();
 }, 100);
 
 document.getElementsByClassName("decorButton")[0].style.display = "none";
@@ -325,9 +325,9 @@ function aliensTire(){
 }
 
 setInterval(() => {
-    victoire();
+    victoireH();
     aliensTire();
-    gameOver();
+    gameOverH();
 }, 100);
 
 document.getElementsByClassName("decorButton")[0].style.display = "none";
@@ -346,6 +346,18 @@ let width = 20;
 let height = 20;
 let shooting = false;
 let shootingAliens = false;
+let score = 0;
+let highscoreEz = 0;
+let highscoreM = 0;
+let highscoreH = 0;
+//let highScore = localStorage.getItem("highscore");
+//document.querySelector(".highscore").textContent = highScore;
+let highScoreEz = localStorage.getItem("highscoreEz");
+document.querySelector(".highscoreEz").textContent = highScoreEz;
+let highScoreM = localStorage.getItem("highscoreM");
+document.querySelector(".highscoreM").textContent = highScoreM;
+let highScoreH = localStorage.getItem("highscoreH");
+document.querySelector(".highscoreH").textContent = highScoreH;
 
 let SoundGame = new Audio();
 SoundGame.src = "/ressources/Never_gonna_Meow_you_up.mp3";
@@ -453,6 +465,9 @@ function shootBullets(){
 
             setTimeout(()=> carres[posBullet].classList.remove('boom'), 300);
             clearInterval(bulletId);
+
+            score += 100;
+            document.querySelector(".score").textContent = score;
         }
 
     }
@@ -460,13 +475,55 @@ function shootBullets(){
 }
 
 let audioOnce = 0;
-function victoire(){
+function victoireEz(){
     if(aliens.length == 0){
         musiqueBackground.pause();
         if(audioOnce == 0){
             document.getElementsByClassName("jeu")[0].style.display = "none" //en wrap de base
             document.getElementById("victoire").style.display = "block";
             SoundGame.play()
+
+            if (score > highscoreEz) {
+                highscoreEz = score;
+                localStorage.setItem("highscoreEz", highscoreEz);
+                document.querySelector(".highscoreEz").textContent = highscoreEz;
+            }
+        }
+        audioOnce++;
+    }
+}
+function victoireM(){
+    if(aliens.length == 0){
+        musiqueBackground.pause();
+        if(audioOnce == 0){
+            document.getElementsByClassName("jeu")[0].style.display = "none" //en wrap de base
+            document.getElementById("victoire").style.display = "block";
+            SoundGame.play()
+
+            if (score > highscoreM) {
+                highscoreM = score;
+                localStorage.setItem("highscoreM", highscoreM);
+                document.querySelector(".highscoreM").textContent = highscoreM;
+                
+            }
+        }
+        audioOnce++;
+    }
+}
+function victoireH(){
+    if(aliens.length == 0){
+        musiqueBackground.pause();
+        if(audioOnce == 0){
+            document.getElementsByClassName("jeu")[0].style.display = "none" //en wrap de base
+            document.getElementById("victoire").style.display = "block";
+            SoundGame.play()
+
+            if (score > highscoreH) {
+                highscoreH = score;
+                localStorage.setItem("highscoreH", highscoreH);
+                document.querySelector(".highscoreH").textContent = highscoreH;
+                
+            }
         }
         audioOnce++;
     }
@@ -477,15 +534,81 @@ document.getElementById("restartGame").addEventListener("click", ()=>{
 });
 
 
-function gameOver(){
+function gameOverEz(){
     if(carres[posShooter].classList.contains("invader")){
         window.location.href="game_over.html";
         musiqueBackground.pause();
+
+        if (score > highscoreEz) {
+            highscoreEz = score;
+            localStorage.setItem("highscoreEz", highscoreEz);
+            document.querySelector(".highscoreEz").textContent = highscoreEz;
+
+        }
     }
 
     if(aliens == 400){
         window.location.href="game_over.html";
         musiqueBackground.pause();
+
+        if (score > highscoreEz) {
+            highscoreEz = score;
+            localStorage.setItem("highscoreEz", highscoreEz);
+            document.querySelector(".highscoreEz").textContent = highscoreEz;
+            
+        }
+    }
+
+}
+function gameOverM(){
+    if(carres[posShooter].classList.contains("invader")){
+        
+        musiqueBackground.pause();
+
+        if (score > highscoreM){
+            highscoreM = score;
+            localStorage.setItem("highscoreM", highscoreM);
+            document.querySelector(".highscoreM").textContent = highscoreM;
+
+        }
+        window.location.href="game_over.html";
+    }
+
+    if(aliens == 400){
+        
+        musiqueBackground.pause();
+
+        if (score > highscoreM){
+            highscoreM = score;
+            localStorage.setItem("highscoreM", highscoreM);
+            document.querySelector(".highscoreM").textContent = highscoreM;
+            
+        }
+        window.location.href="game_over.html";
+    }
+
+}
+function gameOverH(){
+    if(carres[posShooter].classList.contains("invader")){
+        window.location.href="game_over.html";
+        musiqueBackground.pause();
+
+        if (score > highscoreH) {
+            highscoreH = score;
+            localStorage.setItem("highscoreH", highscoreH);
+            document.querySelector(".highscoreH").textContent = highscoreH;
+        }
+    }
+
+    if(aliens == 400){
+        window.location.href="game_over.html";
+        musiqueBackground.pause();
+
+        if (score > highscoreH) {
+            highscoreH = score;
+            localStorage.setItem("highscoreH", highscoreH);
+            document.querySelector(".highscoreH").textContent = highscoreH;
+        }
     }
 
 }
