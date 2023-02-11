@@ -1,6 +1,7 @@
 //EASY MODE==================================================================================================================
 //controle du vaisseau
-//le vaisseau avance de 20 dans le tableau
+//le vaisseau avance de -20 ou recule de +20 dans le tableau
+//le vaisseau se déplace de -1 vers la gauche et +1 vers la droite dans le tableau
 document.getElementById("ez").addEventListener("click", ()=>{
 
     document.addEventListener("keydown", function(event) {
@@ -20,7 +21,7 @@ document.getElementById("ez").addEventListener("click", ()=>{
             case "ArrowUp":
                 carres[posShooter].classList.remove("shooter")
 
-                if (posShooter - height >= 0 && posShooter > 360) posShooter -= 20 //360 c'es la limite du vaisseau
+                if (posShooter - height >= 0 && posShooter > 360) posShooter -= 20 //360 c'est la limite du vaisseau
                 carres[posShooter].classList.add("shooter")
                 break;
     
@@ -45,7 +46,7 @@ document.getElementById("ez").addEventListener("click", ()=>{
             break;
         }
     });
-    //function qui permet au aliens de bouger
+    //fonction qui permet aux aliens de bouger
     function bougerAliens() {
     
     if (direction === "right") {
@@ -72,7 +73,7 @@ document.getElementById("ez").addEventListener("click", ()=>{
 
     setInterval(bougerAliens, 600);//augmente le temps pour plus de facilite
 
-    //function aliens tire permettant de tirer aleatoirement
+    //fonction permettant aux aliens de tirer aleatoirement
     function aliensTire(){
         let selectedAlien = aliens[Math.floor(Math.random()*aliens.length)];
         let alienShootChoice = Math.floor(Math.random() * 3);
@@ -90,7 +91,7 @@ document.getElementById("ez").addEventListener("click", ()=>{
             }        
         }
 
-        //function bulletAlienMove permettant de faire bouger les bullets
+        //function bulletAlienMove permettant de faire bouger les tirs du vaisseau
         function bulletAlienMove(){
             carres[posBulletAlien].classList.remove("bulletAliens")
             posBulletAlien += 20;
@@ -124,7 +125,8 @@ document.getElementById("ez").addEventListener("click", ()=>{
 
 //MEDIUM MODE================================================================================================================
 //controle du vaisseau
-//le vaisseau avance de 20 dans le tableau
+//le vaisseau avance de -20 ou recule de +20 dans le tableau
+//le vaisseau se déplace de -1 vers la gauche et +1 vers la droite dans le tableau
 document.getElementById("medium").addEventListener("click", ()=>{
 
     document.addEventListener("keydown", function(event) {
@@ -168,7 +170,7 @@ document.getElementById("medium").addEventListener("click", ()=>{
             break;
         }
     });
-    //function qui permet au aliens de bouger
+    //fonction qui permet aux aliens de bouger
     function bougerAliens() {
     
     if (direction === "right") {
@@ -195,7 +197,7 @@ document.getElementById("medium").addEventListener("click", ()=>{
 
     setInterval(bougerAliens, 400);//augmente le temps pour plus de facilite
 
-    //function aliens tire permettant de tirer aleatoirement
+    //fonction permettant aux aliens de tirer aleatoirement
     function aliensTire(){
         let selectedAlien = aliens[Math.floor(Math.random()*aliens.length)];
         let alienShootChoice = Math.floor(Math.random() * 3);
@@ -213,7 +215,7 @@ document.getElementById("medium").addEventListener("click", ()=>{
             }        
         }
 
-        //function bulletAlienMove permettant de faire bouger les bullets
+        //function bulletAlienMove permettant de faire bouger les tirs du vaisseau
         function bulletAlienMove(){
             carres[posBulletAlien].classList.remove("bulletAliens")
             posBulletAlien += 20;
@@ -249,7 +251,8 @@ document.getElementById("medium").addEventListener("click", ()=>{
 
 //HARD MODE==================================================================================================================
 //controle du vaisseau
-//le vaisseau avance de 20 dans le tableau
+//le vaisseau avance de -20 ou recule de +20 dans le tableau
+//le vaisseau se déplace de -1 vers la gauche et +1 vers la droite dans le tableau
 document.getElementById("hard").addEventListener("click", ()=>{
 
     document.addEventListener("keydown", function(event) {
@@ -293,7 +296,7 @@ document.getElementById("hard").addEventListener("click", ()=>{
             break;
         }
     });
-    //function qui permet au aliens de bouger
+    //fonction qui permet aux aliens de bouger
     function bougerAliens() {
     
     if (direction === "right") {
@@ -320,7 +323,7 @@ document.getElementById("hard").addEventListener("click", ()=>{
 
     setInterval(bougerAliens, 250);//augmente le temps pour plus de facilite
 
-    //function aliens tire permettant de tirer aleatoirement
+    //fonction permettant aux aliens de tirer aleatoirement
     function aliensTire(){
         let selectedAlien = aliens[Math.floor(Math.random()*aliens.length)];
 
@@ -335,7 +338,7 @@ document.getElementById("hard").addEventListener("click", ()=>{
 
         }        
         
-        //function bulletAlienMove permettant de faire bouger les bullets
+        //function bulletAlienMove permettant de faire bouger les tirs du vaisseau
         function bulletAlienMove(){
             carres[posBulletAlien].classList.remove("bulletAliens")
             posBulletAlien += 20;
