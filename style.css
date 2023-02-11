@@ -18,6 +18,7 @@ h1 {
 .container{
     display: flex;
     flex-direction: row;
+    padding-right: 18%;
 }
 .container2{
     display: flex;
